@@ -27,7 +27,7 @@
 - (void)setPlaceholder:(NSString *)placeholder {
    UILabel *placeholderLabel = [self placeholderLabel];
    if (! placeholderLabel) {
-      placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.textContainerInset.top, self.frame.size.width - 2 * 5, 13 + 2)];
+      placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, self.textContainerInset.top, self.frame.size.width - 2 * 5, 20)];
       placeholderLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1];
       placeholderLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
       [self addSubview:placeholderLabel];
@@ -55,8 +55,9 @@
          [self placeholderLabel].font = [UIFont systemFontOfSize:13];
       
       CGRect frame = [self placeholderLabel].frame;
+      frame.origin.x = self.textContainerInset.left + 5;
       frame.origin.y = self.textContainerInset.top;
-      frame.size.height = [self placeholderLabel].font.pointSize + 2;
+      frame.size.height = [self placeholderLabel].font.lineHeight;
       [self placeholderLabel].frame = frame;
       
       [self placeholderLabel].hidden = NO;
